@@ -1,0 +1,17 @@
+import java.util.*;
+public class overloadingFunction {
+    public static int multiply(int a, int b) {
+        return a * b;
+    }
+
+    public static double multiply(double a, double b) {
+        return a * b;
+    }
+
+    public static void main(String args[]) {
+        System.out.println(multiply(5, 10)); // Calls the int version
+        System.out.println(multiply(5.5, 10.5)); // Calls the double version        
+    }
+}
+
+//Function overloading allows us to have multiple methods with the same name but different parameters. In this example, we have two versions of the multiply method: one that takes two integers and another that takes two doubles. The appropriate method is called based on the type of arguments passed when the method is invoked.
