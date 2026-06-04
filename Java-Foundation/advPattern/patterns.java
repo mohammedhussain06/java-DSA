@@ -154,7 +154,6 @@ public class patterns {
         }
     }
 
-
     public static void main(String args[]) {
         // hollow(4, 5);
         // inverted(5);
