@@ -199,6 +199,45 @@ public class LinkedList {
         return true;
     }
 
+    //detecting a cycle in LL
+    public static boolean isCycle() {
+        Node slow = head;
+        Node fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void removeCycle() {
+        Node slow = head;    //detecting cycle
+        Node fast = head;
+        boolean cycle = false;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                cycle = true;
+                break;
+            }
+        }
+        if (cycle == false) {
+            return;
+        }
+        slow = head;       //finding meeting point
+        Node prev = null;
+        while (slow != fast) {
+            prev = fast;
+            slow = slow.next;
+            fast = fast.next;
+        }
+        prev.next = null;   //removing cycle 
+    }
+
     // print
     public void print() {
         if (head == null) {
@@ -236,11 +275,20 @@ public class LinkedList {
         // ll.deleteNthFromEnd(3);
         // ll.print();
 
-        ll.addLast(1);
-        ll.addLast(2);
-        ll.addLast(2);
-        ll.addLast(1);
-        ll.print();
-        System.out.println(ll.checkPallindrome());
+        // ll.addLast(1);
+        // ll.addLast(2);
+        // ll.addLast(2);
+        // ll.addLast(1);
+        // ll.print();
+        // System.out.println(ll.checkPallindrome());
+
+        head = new Node(1);
+        Node temp = new Node(2);
+        head.next = temp;
+        head.next.next = new Node(3);
+        head.next.next.next = temp;
+        System.out.println(isCycle());
+        removeCycle();
+        System.out.println(isCycle());
     }
 }
