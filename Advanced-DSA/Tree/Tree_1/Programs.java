@@ -16,8 +16,8 @@ public class Programs {
             return 0;
         }
         int lh = height(root.left);
-        int lr = height(root.right);
-        return Math.max(lr, lr) + 1;
+        int rh = height(root.right);
+        return Math.max(lh, rh) + 1;
     }
 
     public static int count(Node root) {
